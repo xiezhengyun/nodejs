@@ -1,0 +1,19 @@
+{
+  "name": "blog2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.0",//解析post请求数据
+    "cookies": "^0.7.1", //读写cookie
+    "express": "^4.15.4",
+    "markdown": "^0.5.0",    //markdown语法解析生成模块
+    "mongoose": "^4.11.10", //操作mongodb数据
+    "swig": "^1.4.2"   //模板解析引擎
+  }
+}
