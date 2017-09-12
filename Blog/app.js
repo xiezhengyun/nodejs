@@ -5,6 +5,8 @@ var express = require('express');
 var swig = require('swig');
 //加载数据库模块
 var mongoose = require('mongoose');
+//加载body-parse
+var bodyParse = require('body-parser');
 
 //创建app应用 => NodeJs Http.createServer();
 var app = express();
@@ -22,6 +24,8 @@ app.set('views', './views');
 app.set('view engine', 'html');
 //在开发过程中，需要取消模板缓存,更改模板视图，无需重启应用
 swig.setDefaults({cache: false});
+//bodyparse设置
+app.use( bodyParse.urlencoded({extended: true}) );
 
 //根据不同的功能，划分模块
 
@@ -42,18 +46,16 @@ app.use('/', require('./routers/main'))
 
 
 // 连接数据库
-mongoose.connect('mongodb://localhost:27018/blog-nodejs',function(err){
+mongoose.connect('mongodb://localhost:27017/blog',function(err){
 	if(err){
-		console.log('数据库连接失败哦');
+		console.log('mongodb is err');
 	}else{
-		console.log('数据库连接成功哦');
+		console.log('mongodb is ok');
 		//监听http请求
 		app.listen(8081);
 
 	}
 });
-//监听http请求
-app.listen(8081);
 
 /*
     1.用户发送http请求
